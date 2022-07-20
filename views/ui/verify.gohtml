@@ -1,0 +1,45 @@
+{{template "Header"}}
+
+<body>
+{{template "Navbar" .SessionValue}}
+
+    <!-- verify email address form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Verify Email Address</h4>
+                    </div>
+                    <div class="card-body">
+                    {{if .Verify}}
+                        <div class="alert alert-success">
+                            <strong>Success!</strong> Your email address has been already verified.
+                        </div>
+                    {{else}}
+
+                        <p>Please check your email and put here 6 digit verification code to continue.</p>
+
+                        <form action="/verify" method="post">
+                            <div class="form-group">
+                                <label for="verify-email">Verify Email</label>
+                                <input required type="text" value="{{.Email}}" class="form-control" id="verify-email" name="verify-email"
+                                    placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label for="verify-code">Verify Code</label>
+                                <input required type="text" class="form-control" id="verify-code" name="verify-code"
+                                    placeholder="Enter your code">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Verify</button>
+                        </form>
+                    {{end}}
+                    <p>{{.Message}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of verify email address form-->
+{{template "Footer"}}

@@ -1,0 +1,56 @@
+
+{{template "Header"}}
+<body>
+{{template "Navbar"}}
+    <!-- activity form -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center">Activity</h1>
+                <form action="/" method="post">
+                    <div class="form-group">
+                        <label for="activity">Activity</label>
+                        <input required type="text" class="form-control" id="activity" name="activity"
+                            placeholder="Enter activity">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" id="description" name="description"
+                            placeholder="Enter description">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" placeholder="Enter date">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="time" class="form-control" id="time" name="time" placeholder="Enter time">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" id="location" name="location"
+                            placeholder="Enter location">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <input type="text" class="form-control" id="category" name="category"
+                            placeholder="Enter category">
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <!-- dropdown -->
+                        <select required class="form-control" id="priority" name="priority">
+                            <option selected disabled  value="">Select priority</option>
+                            <option value="Significant">Significant</option>
+                            <option value="Urgent">Urgent</option>
+                            <option value="Insignificant">Insignificant</option>
+                            <option value="Not Urgent">Not Urgent</option>
+                        </select>
+                    </div>
+                    <!-- input submit -->
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+{{template "Footer"}}

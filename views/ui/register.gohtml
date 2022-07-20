@@ -1,0 +1,71 @@
+{{template "Header"}}
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Activita</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                </div>
+                <!-- right -->
+                <div class="navbar-nav ml-auto">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+    </div>
+
+    <!-- form -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center">Register</h1>
+                <form action="/register" method="post">
+               
+                    <div class="form-group">
+                        <label for="username">Username: </label>
+                        <small class="text-danger">{{.Username}}</small>
+   
+                        <input required type="text" class="form-control" id="username" name="username"
+                            placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email: </label>
+                          <small class="text-danger">{{.Email}}</small>
+                        <input required type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password: </label>
+                          <small class="text-danger">{{.Password}}</small>
+                        <input required type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input required type="password" class="form-control" id="confirm_password" name="confirm_password"
+                            placeholder="Confirm password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <p class="text-center">Already have a account? <a href="/login">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
