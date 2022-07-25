@@ -39,6 +39,17 @@ func AllActivityById(userId int) ([]Activity, error) {
 	return activities, nil
 }
 
+// single activity by id
+func ActivityById(id int) (*Activity, error) {
+	var activity Activity
+
+	err := DB.Where("id = ?", id).First(&activity).Error
+	if err != nil {
+		return nil, err
+	}
+	return &activity, nil
+}
+
 // ActivityById returns activity by id
 func ActivityByUserId(userId int) (*Activity, error) {
 	var activity Activity
@@ -47,4 +58,12 @@ func ActivityByUserId(userId int) (*Activity, error) {
 		return nil, err
 	}
 	return &activity, nil
+}
+
+// update activity using id
+func UpdateActivity(id int, activity, description, date, time, location, category, priority string) error {
+	var activityData Activity
+
+	DB.Model(&activityData).Where("id = ?", id).Updates(Activity{Activity: activity, Description: description, Date: date, Time: time, Location: location, Category: category, Priority: priority})
+	return nil
 }

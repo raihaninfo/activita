@@ -16,6 +16,9 @@ func App(PORT int, db *gorm.DB) {
 	r.HandleFunc("/", middleware.Auth(handlers.Home)).Methods(http.MethodGet)
 	r.HandleFunc("/add", middleware.Auth(handlers.AddActivity)).Methods(http.MethodGet)
 	r.HandleFunc("/add", middleware.Auth(handlers.AddActivityPost)).Methods(http.MethodPost)
+	r.HandleFunc("/update/{id}", middleware.Auth(handlers.UpdateActivity)).Methods(http.MethodGet)
+	r.HandleFunc("/update", middleware.Auth(handlers.UpdateActivityPost)).Methods(http.MethodPost)
+
 	r.HandleFunc("/login", middleware.CheckLogin(handlers.Login)).Methods(http.MethodGet)
 	r.HandleFunc("/login", handlers.LoginAuth).Methods(http.MethodPost)
 	r.HandleFunc("/register", middleware.CheckLogin(handlers.Register)).Methods(http.MethodGet)
@@ -27,6 +30,7 @@ func App(PORT int, db *gorm.DB) {
 	r.HandleFunc("/verify/req", handlers.VerifyReq).Methods(http.MethodGet)
 	r.HandleFunc("/logout", middleware.Auth(handlers.Logout)).Methods(http.MethodGet)
 	r.HandleFunc("/repass", handlers.RePassword).Methods(http.MethodGet)
+
 
 	log.Printf("Listening Port: %v", PORT)
 	http.ListenAndServe(fmt.Sprintf(":%v", PORT), r)
