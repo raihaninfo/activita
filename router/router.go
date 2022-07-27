@@ -19,6 +19,8 @@ func App(PORT int, db *gorm.DB) {
 	r.HandleFunc("/update/{id}", middleware.Auth(handlers.UpdateActivity)).Methods(http.MethodGet)
 	r.HandleFunc("/update", middleware.Auth(handlers.UpdateActivityPost)).Methods(http.MethodPost)
 
+	r.HandleFunc("/delete/{id}", middleware.Auth(handlers.DeleteActivity)).Methods(http.MethodGet)
+
 	r.HandleFunc("/login", middleware.CheckLogin(handlers.Login)).Methods(http.MethodGet)
 	r.HandleFunc("/login", handlers.LoginAuth).Methods(http.MethodPost)
 	r.HandleFunc("/register", middleware.CheckLogin(handlers.Register)).Methods(http.MethodGet)

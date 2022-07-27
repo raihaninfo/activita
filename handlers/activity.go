@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -99,6 +100,18 @@ func UpdateActivityPost(w http.ResponseWriter, r *http.Request) {
 	intId, _ := strconv.Atoi(id)
 
 	models.UpdateActivity(intId, Activity, Description, Date, Time, Location, Category, Priority)
+	w.Header().Set("Location", "/")
+	http.Redirect(w, r, "/", http.StatusSeeOther)
+}
+
+func DeleteActivity(w http.ResponseWriter, r *http.Request) {
+	id := mux.Vars(r)["id"]
+	intId, _ := strconv.Atoi(id)
+	del, err:= models.DeleteActivity(intId)
+	if err!=nil{
+		log.Println(err)
+	}
+	fmt.Println(del)
 	w.Header().Set("Location", "/")
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }

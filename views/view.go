@@ -7,7 +7,7 @@ type View struct {
 }
 
 func NewView(files ...string) *View {
-	files = append(files, "views/ui/header.gohtml", "views/ui/navbar.gohtml", "views/ui/footer.gohtml")
+	files = append(files, "views/ui/header.gohtml", "views/ui/navbar.gohtml", "views/ui/footer.gohtml", "views/ui/modal.gohtml")
 	t, err := template.ParseFiles(files...)
 	if err != nil {
 		panic(err)

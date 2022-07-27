@@ -1,5 +1,10 @@
 package models
 
+import (
+	"fmt"
+	"log"
+)
+
 type Activity struct {
 	Id          int `gorm:"primaryKey;autoIncrement:true;unique"`
 	UserId      int `gorm:"not nul"`
@@ -66,4 +71,16 @@ func UpdateActivity(id int, activity, description, date, time, location, categor
 
 	DB.Model(&activityData).Where("id = ?", id).Updates(Activity{Activity: activity, Description: description, Date: date, Time: time, Location: location, Category: category, Priority: priority})
 	return nil
+}
+
+// delete activity using id
+func DeleteActivity(id int) (string, error) {
+	var activityData Activity
+
+	err := DB.Where("id = ?", id).Delete(&activityData).Error
+	if err != nil {
+		log.Println(err)
+	}
+	msg := fmt.Sprintf("id #%v Deleted", id)
+	return msg, nil
 }
