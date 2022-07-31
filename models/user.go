@@ -70,3 +70,10 @@ func VerifyUser(id int) error {
 	err = DB.Save(&user).Error
 	return err
 }
+
+// user password hash update by email
+func UpdatePassword(email, password string) error {
+	var user User
+	DB.Model(&user).Where("email = ?", email).Updates(User{Password: password})
+	return nil
+}

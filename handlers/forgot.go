@@ -17,25 +17,27 @@ type ForgotData struct {
 	User bool
 }
 
+var ForgotOTP string
+var UserEmail string
+
 func ForgotAuth(w http.ResponseWriter, r *http.Request) {
 	email := r.FormValue("email")
 	user, err := models.UserByEmail(email)
 	if err != nil {
 		fmt.Println(err)
 	}
-
+	UserEmail = user.Email
 	data := ForgotData{}
 	if user.Email == "" {
 		data.User = false
 	} else {
 		data.User = true
 		http.Redirect(w, r, "/repass", http.StatusSeeOther)
-		otp, _ := helper.GenerateOTP(6)
+		ForgotOTP, _ = helper.GenerateOTP(6)
 
-		message:= "<body><h3>Dear User!</h3> <br>your Forgot password otp is <h2 style=\"text-align:center;\"><span style=\"font-size:40px;border:2px solid black;padding:10px\">%v</span></h2> \n</body>"
+		message := "<body><h3>Dear User!</h3> <br>your Forgot password otp is <h2 style=\"text-align:center;\"><span style=\"font-size:40px;border:2px solid black;padding:10px\">%v</span></h2> \n</body>"
 
-
-		helper.SendMail(user.Email, otp, "Subject: Activita Forgot Password\n", message)
+		helper.SendMail(user.Email, ForgotOTP, "Subject: Activita Forgot Password\n", message)
 	}
 	views.ForgotView.Template.Execute(w, data)
 }
