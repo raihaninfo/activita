@@ -1,6 +1,6 @@
 # activita
 
-Golang Activity project
+Activita (todo activity) Golang Complete Real-Life Project
 
 ## Features
 
