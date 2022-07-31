@@ -35,11 +35,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-8">
+
+                             
                                 <p>
-                                    <form action="">                                      
+                                    <form method="post" action="/forgot">                                      
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" id="email"
+                                            <input required type="email" name="email" class="form-control" id="email"
                                                 aria-describedby="emailHelp" placeholder="Enter email">
                                             <small id="emailHelp" class="form-text text-muted">We'll never share your
                                                 email with
@@ -48,6 +50,20 @@
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </p>
+                        
+           
+                {{if .}}
+                    {{if .User}}
+                        <p>Check your email</p>
+                    {{else}}
+                        <div class="alert alert-danger">
+                            <strong>Fail!</strong> Your email address not exist, Please Create your <a href="/register">Account</a>
+                        </div>
+                    {{end}}
+                {{end}}
+
+
+                            
                             </div>
                         </div>
                     </div>

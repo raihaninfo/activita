@@ -41,8 +41,8 @@ func Verify(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			fmt.Println(err)
 		}
-		fmt.Println(OTPRandom)
-		helper.SendMail(thisUser.Email, OTPRandom)
+		messageBody:= "<body>Welcome to Activita, Your Profile verification code is <h2 style=\"text-align:center;\"><span style=\"font-size:40px;border:2px solid black;padding:10px\">%v</span></h2> \n</body>"
+		helper.SendMail(thisUser.Email, OTPRandom, "Subject: Activita Email Verification\n", messageBody)
 	}
 
 	var verifyData = VerifyData{

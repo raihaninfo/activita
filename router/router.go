@@ -26,6 +26,8 @@ func App(PORT int, db *gorm.DB) {
 	r.HandleFunc("/register", middleware.CheckLogin(handlers.Register)).Methods(http.MethodGet)
 	r.HandleFunc("/register", handlers.RegisterAuth).Methods(http.MethodPost)
 	r.HandleFunc("/forgot", handlers.Forgot).Methods(http.MethodGet)
+	r.HandleFunc("/forgot", handlers.ForgotAuth).Methods(http.MethodPost)
+
 	r.HandleFunc("/profile", middleware.Auth(handlers.Profile)).Methods(http.MethodGet)
 	r.HandleFunc("/verify", handlers.Verify).Methods(http.MethodGet)
 	r.HandleFunc("/verify", handlers.VerifyAuth).Methods(http.MethodPost)
@@ -33,6 +35,7 @@ func App(PORT int, db *gorm.DB) {
 	r.HandleFunc("/logout", middleware.Auth(handlers.Logout)).Methods(http.MethodGet)
 	r.HandleFunc("/repass", handlers.RePassword).Methods(http.MethodGet)
 
+	r.NotFoundHandler = http.HandlerFunc(handlers.NotFound)
 
 	log.Printf("Listening Port: %v", PORT)
 	http.ListenAndServe(fmt.Sprintf(":%v", PORT), r)

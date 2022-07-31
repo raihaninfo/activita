@@ -9,7 +9,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func SendMail(email, otp string) {
+func SendMail(email, otp, subjectMail, emailBody string) {
 	err1:= godotenv.Load()
 	if err1!=nil{
 		log.Fatal(err1)
@@ -27,9 +27,12 @@ func SendMail(email, otp string) {
 
 	// Message.
 
-	subject := "Subject: Activita Email Verification\n"
+	// subject := "Subject: Activita Email Verification\n"
+	subject := subjectMail
 
-	mainMessage := fmt.Sprintf("<body>Welcome to Activita, Your Profile verification code is <h2 style=\"text-align:center;\"><span style=\"font-size:40px;border:2px solid black;padding:10px\">%v</span></h2> \n</body>", otp)
+	messageBody:= emailBody
+
+	mainMessage := fmt.Sprintf(messageBody, otp)
 
 	body := mainMessage
 	mime := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
