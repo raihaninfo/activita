@@ -10,6 +10,6 @@ const (
 )
 
 func main() {
-	db := models.Init()
-	router.App(PORT, db)
+	models.Init()
+	router.App(PORT)
 }

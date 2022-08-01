@@ -8,10 +8,9 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/raihaninfo/activita/handlers"
 	"github.com/raihaninfo/activita/middleware"
-	"gorm.io/gorm"
 )
 
-func App(PORT int, db *gorm.DB) {
+func App(PORT int) {
 	r := mux.NewRouter()
 	r.HandleFunc("/", middleware.Auth(handlers.Home)).Methods(http.MethodGet)
 	r.HandleFunc("/add", middleware.Auth(handlers.AddActivity)).Methods(http.MethodGet)

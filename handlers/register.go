@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/raihaninfo/activita/controllers"
 	"github.com/raihaninfo/activita/helper"
+	"github.com/raihaninfo/activita/message"
 	"github.com/raihaninfo/activita/middleware"
 	"github.com/raihaninfo/activita/models"
 	"github.com/raihaninfo/activita/views"
@@ -26,7 +26,7 @@ func RegisterAuth(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	msg := controllers.RegisterMessage(username, email, password, confirmPassword)
+	msg := message.RegisterMessage(username, email, password, confirmPassword)
 	if msg.Username == "" && msg.Email == "" && msg.Password == "" {
 		user, err := models.NewUser(username, email, hashPass)
 		if err != nil {
