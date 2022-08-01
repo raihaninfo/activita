@@ -2,6 +2,8 @@ package models
 
 import (
 	"errors"
+	"fmt"
+	"log"
 
 	"gorm.io/gorm"
 )
@@ -76,4 +78,16 @@ func UpdatePassword(email, password string) error {
 	var user User
 	DB.Model(&user).Where("email = ?", email).Updates(User{Password: password})
 	return nil
+}
+
+// delete user using id
+func DeleteUserByEmail(email string) (string, error) {
+	var user User
+
+	err := DB.Where("email = ?", email).Delete(&user).Error
+	if err != nil {
+		log.Println(err)
+	}
+	msg := fmt.Sprintf("account #%v Deleted", email)
+	return msg, nil
 }

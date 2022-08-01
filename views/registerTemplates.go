@@ -12,5 +12,6 @@ var (
 	ResetPassView *View = NewView("views/ui/re-password.gohtml")
 	UpdateView *View = NewView("views/ui/update-activity.gohtml")
 	NotFoundView *View = NewView("views/ui/404.gohtml")
+	DeleteAccountView *View = NewView("views/ui/delete-account.gohtml")
 	
 )

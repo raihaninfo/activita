@@ -35,6 +35,8 @@ func App(PORT int, db *gorm.DB) {
 	r.HandleFunc("/logout", middleware.Auth(handlers.Logout)).Methods(http.MethodGet)
 	r.HandleFunc("/repass", handlers.RePassword).Methods(http.MethodGet)
 	r.HandleFunc("/repass", handlers.RePasswordAuth).Methods(http.MethodPost)
+	r.HandleFunc("/profile/delete", middleware.Auth(handlers.DeleteAccount)).Methods(http.MethodGet)
+	r.HandleFunc("/profile/delete", middleware.Auth(handlers.DeleteAccountAuth)).Methods(http.MethodPost)
 
 	r.NotFoundHandler = http.HandlerFunc(handlers.NotFound)
 

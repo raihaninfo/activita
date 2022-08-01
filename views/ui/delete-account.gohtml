@@ -1,0 +1,54 @@
+{{template "Header"}}
+
+<body>
+{{template "Navbar" .SessionValue}}
+
+{{/* delete accound  */}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Delete Account</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="">
+                      
+                        <div class="alert alert-warning">
+                            <strong>warning!</strong>
+                            <p>You are about to delete your account. This action is irreversible. Are you sure you want to continue?</p>
+                            <p></p>
+                            
+                        </div>
+                        
+                        <div class="form-group has-erro">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group has-error">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Delete Account
+                                </button>
+                            </div>
+                {{if .Error}}
+    
+                        <div class="alert alert-danger">
+                            <strong>Fail!</strong> {{.Error}}
+                        </div>
+
+                {{end}}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{template "Footer"}}
