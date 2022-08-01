@@ -50,7 +50,8 @@ func DeleteLoginSession(w http.ResponseWriter, r *http.Request) {
 		MaxAge:   -1,
 		HttpOnly: true,
 	}
-	session.Values["userId"] = nil
+	delete(session.Values, "userId")
+	// session.Values["userId"] = nil
 	err = session.Save(r, w)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
