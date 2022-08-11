@@ -43,8 +43,6 @@ func AddActivity(w http.ResponseWriter, r *http.Request) {
 	}
 
 	views.AddView.Template.Execute(w, userData)
-
-	fmt.Println(user.Status)
 }
 
 func AddActivityPost(w http.ResponseWriter, r *http.Request) {
@@ -68,7 +66,6 @@ func AddActivityPost(w http.ResponseWriter, r *http.Request) {
 // update activity
 func UpdateActivity(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
-	// fmt.Println(id)
 	intId, _ := strconv.Atoi(id)
 	activity, err := models.ActivityById(intId)
 	if err != nil {
@@ -107,11 +104,10 @@ func UpdateActivityPost(w http.ResponseWriter, r *http.Request) {
 func DeleteActivity(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 	intId, _ := strconv.Atoi(id)
-	del, err:= models.DeleteActivity(intId)
-	if err!=nil{
+	_, err := models.DeleteActivity(intId)
+	if err != nil {
 		log.Println(err)
 	}
-	fmt.Println(del)
 	w.Header().Set("Location", "/")
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }

@@ -23,5 +23,4 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	}
 
 	views.HomeView.Template.Execute(w, homeData)
-	// fmt.Println(sessionValue, jj)
 }

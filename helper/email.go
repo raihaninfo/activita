@@ -10,11 +10,11 @@ import (
 )
 
 func SendMail(email, otp, subjectMail, emailBody string) {
-	err1:= godotenv.Load()
-	if err1!=nil{
+	err1 := godotenv.Load()
+	if err1 != nil {
 		log.Fatal(err1)
 	}
-	
+
 	from := os.Getenv("Email")
 	password := os.Getenv("Password")
 
@@ -30,7 +30,7 @@ func SendMail(email, otp, subjectMail, emailBody string) {
 	// subject := "Subject: Activita Email Verification\n"
 	subject := subjectMail
 
-	messageBody:= emailBody
+	messageBody := emailBody
 
 	mainMessage := fmt.Sprintf(messageBody, otp)
 
@@ -47,6 +47,5 @@ func SendMail(email, otp, subjectMail, emailBody string) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println("Email Sent Successfully!")
 
 }

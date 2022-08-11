@@ -55,9 +55,9 @@ func Verify(w http.ResponseWriter, r *http.Request) {
 }
 
 func VerifyAuth(w http.ResponseWriter, r *http.Request) {
-	email := r.FormValue("verify-email")
+	// email := r.FormValue("verify-email")
 	verifyCode := r.FormValue("verify-code")
-	fmt.Println(email, verifyCode)
+	// fmt.Println(email, verifyCode)
 	sessionValue := middleware.SessionCheck(w, r)
 	thisUser, _ := models.UserById(sessionValue.(int))
 	var verify bool

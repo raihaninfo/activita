@@ -42,8 +42,8 @@ func LoginAuth(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// logout
 func Logout(w http.ResponseWriter, r *http.Request) {
-	// logout
 	middleware.DeleteLoginSession(w, r)
 	w.Header().Set("Location", "/")
 	http.Redirect(w, r, "/", http.StatusSeeOther)

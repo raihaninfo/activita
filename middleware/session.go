@@ -51,7 +51,6 @@ func DeleteLoginSession(w http.ResponseWriter, r *http.Request) {
 		HttpOnly: true,
 	}
 	delete(session.Values, "userId")
-	// session.Values["userId"] = nil
 	err = session.Save(r, w)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

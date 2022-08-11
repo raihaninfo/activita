@@ -35,7 +35,6 @@ func RegisterAuth(w http.ResponseWriter, r *http.Request) {
 		thisUser, _ := models.UserById(user.Id)
 		middleware.CreateLoginSession(w, r, thisUser.Id)
 		w.Header().Set("Location", "/")
-		// http.Redirect(w, r, "/", http.StatusSeeOther)
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 	}
 	views.RegisterView.Template.Execute(w, msg)
