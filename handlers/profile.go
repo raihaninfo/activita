@@ -56,6 +56,7 @@ func DeleteAccountAuth(w http.ResponseWriter, r *http.Request) {
 		}
 		if hash {
 			models.DeleteUserByEmail(email)
+			middleware.DeleteLoginSession(w, r)
 			http.Redirect(w, r, "/", http.StatusSeeOther)
 		} else {
 			data.Error = "Password is incorrect"
