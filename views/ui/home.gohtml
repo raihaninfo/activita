@@ -9,7 +9,7 @@
             <div class="">
                 <h1 class="text-center">Activity</h1>
                 <!-- activity table -->
-                <table class="table table-striped table-bordered" id="activityTable">
+                <table class="table table-striped table-bordered" id="datatable">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -39,11 +39,6 @@
                             <td>
                                 <a href="/update/{{.Id}}" class="btn btn-info">Edit</a>
                                 <a href="/delete/{{.Id}}" class="btn btn-danger">Delete</a>
-
-                                {{/* {{template "Delete" }} */}}
-            
-              
-                                
                             </td>
                         </tr>
                         {{end}}
