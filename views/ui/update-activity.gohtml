@@ -1,57 +1,59 @@
-
 {{template "Header"}}
+
 <body>
-{{template "Navbar" .SessionValue}}
+    {{template "Navbar" .SessionValue}}
     <!-- activity form -->
     <div class="container">
         <div class="row">
-       
+
             <div class="col-md-6 offset-md-3">
                 <h1 class="text-center">Update Activity</h1>
                 <form action="/update" method="post">
-                   
                     <div class="form-group">
-                       
-                        <input hidden  value="{{.Activity.Id}}" name="id">
+                        <input hidden value="{{.Activity.Id}}" name="id">
                     </div>
                     <div class="form-group">
                         <label for="activity">Activity</label>
-                        <input required type="text" class="form-control" id="activity" value="{{.Activity.Activity}}" name="activity"
-                            placeholder="Enter activity">
+                        <input required type="text" class="form-control" id="activity" value="{{.Activity.Activity}}"
+                            name="activity" placeholder="Enter activity">
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" class="form-control" id="description" name="description" value="{{.Activity.Description}}"
-                            placeholder="Enter description">
+                        <input type="text" class="form-control" id="description" name="description"
+                            value="{{.Activity.Description}}" placeholder="Enter description">
                     </div>
                     <div class="form-group">
                         <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date" name="date" value="{{.Activity.Date}}" placeholder="Enter date">
+                        <input type="date" class="form-control" id="date" name="date" value="{{.Activity.Date}}"
+                            placeholder="Enter date">
                     </div>
                     <div class="form-group">
                         <label for="time">Time</label>
-                        <input type="time" class="form-control" id="time" name="time" value="{{.Activity.Time}}" placeholder="Enter time">
+                        <input type="time" class="form-control" id="time" name="time" value="{{.Activity.Time}}"
+                            placeholder="Enter time">
                     </div>
                     <div class="form-group">
                         <label for="location">Location</label>
-                        <input type="text" class="form-control" id="location" name="location" value="{{.Activity.Location}}"
-                            placeholder="Enter location">
+                        <input type="text" class="form-control" id="location" name="location"
+                            value="{{.Activity.Location}}" placeholder="Enter location">
                     </div>
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <input type="text" class="form-control" id="category" name="category" value="{{.Activity.Category}}"
-                            placeholder="Enter category">
+                        <input type="text" class="form-control" id="category" name="category"
+                            value="{{.Activity.Category}}" placeholder="Enter category">
                     </div>
                     <div class="form-group">
                         <label for="priority">Priority</label>
                         <!-- dropdown -->
                         <select required class="form-control" id="priority" name="priority">
-                        
-                            <option value="Significant" {{if eq .Activity.Priority "Significant"}}selected{{end}}>Significant</option>
+                            <option value="Significant" {{if eq .Activity.Priority "Significant"}}selected{{end}}>
+                                Significant</option>
                             <option value="Urgent" {{if eq .Activity.Priority "Urgent"}}selected{{end}}>Urgent</option>
-                            <option value="Insignificant" {{if eq .Activity.Priority "Insignificant"}}selected{{end}}>Insignificant</option>
-                            <option value="Not Urgent" {{if eq .Activity.Priority "Not Urgent"}}selected{{end}}>Not Urgent</option>
-                     
+                            <option value="Insignificant" {{if eq .Activity.Priority "Insignificant"}}selected{{end}}>
+                                Insignificant</option>
+                            <option value="Not Urgent" {{if eq .Activity.Priority "Not Urgent"}}selected{{end}}>Not
+                                Urgent</option>
+
                         </select>
                     </div>
                     <!-- input submit -->
@@ -60,4 +62,4 @@
             </div>
         </div>
     </div>
-{{template "Footer"}}
+    {{template "Footer"}}

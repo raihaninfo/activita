@@ -9,7 +9,7 @@
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-          
+
                 <!-- right -->
                 <div class="navbar-nav ml-auto">
                     <ul class="navbar-nav">
@@ -22,7 +22,6 @@
                     </ul>
                 </div>
         </nav>
-
     </div>
     <!-- Forget Password page -->
     <div class="container">
@@ -35,10 +34,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-8">
-
-                             
                                 <p>
-                                    <form method="post" action="/forgot">                                      
+                                    <form method="post" action="/forgot">
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input required type="email" name="email" class="form-control" id="email"
@@ -50,20 +47,17 @@
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </p>
-                        
-           
-                {{if .}}
-                    {{if .User}}
-                        <p>Check your email</p>
-                    {{else}}
-                        <div class="alert alert-danger">
-                            <strong>Fail!</strong> Your email address not exist, Please Create your <a href="/register">Account</a>
-                        </div>
-                    {{end}}
-                {{end}}
 
-
-                            
+                                {{if .}}
+                                {{if .User}}
+                                <p>Check your email</p>
+                                {{else}}
+                                <div class="alert alert-danger">
+                                    <strong>Fail!</strong> Your email address not exist, Please Create your <a
+                                        href="/register">Account</a>
+                                </div>
+                                {{end}}
+                                {{end}}
                             </div>
                         </div>
                     </div>
@@ -73,4 +67,4 @@
     </div>
     <!-- Forget Password page -->
 
-{{template "Footer"}}
+    {{template "Footer"}}

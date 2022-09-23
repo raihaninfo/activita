@@ -1,29 +1,30 @@
-
 {{template "Header"}}
-<body>
-{{template "Navbar" .SessionValue}}
-        {{if .Verify}}
 
-        {{else}}
-        <div class="container">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Please <a href="/verify/req">verify</a> your email account, otherwise you will not be able to use our special services. <a href="/verify/req">verify</a></strong>
-                <button type="button" class="close float-end" data-bs-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                
-            </div>
+<body>
+    {{template "Navbar" .SessionValue}}
+    {{if .Verify}}
+
+    {{else}}
+    <div class="container">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Please <a href="/verify/req">verify</a> your email account, otherwise you will not be able to use
+                our special services. <a href="/verify/req">verify</a></strong>
+            <button type="button" class="close float-end" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
         </div>
-        {{end}}
-        
+    </div>
+    {{end}}
+
     <!-- activity form -->
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h1 class="text-center">Activity</h1>
 
-                    {{if .Verify}}
-                        
+                {{if .Verify}}
+
                 <form action="/add" method="post">
                     <div class="form-group">
                         <label for="activity">Activity</label>
@@ -57,7 +58,7 @@
                         <label for="priority">Priority</label>
                         <!-- dropdown -->
                         <select required class="form-control" id="priority" name="priority">
-                            <option selected disabled  value="">Select priority</option>
+                            <option selected disabled value="">Select priority</option>
                             <option value="Significant">Significant</option>
                             <option value="Urgent">Urgent</option>
                             <option value="Insignificant">Insignificant</option>
@@ -67,12 +68,12 @@
                     <!-- input submit -->
                     <input type="submit" class="btn btn-primary" value="Submit">
                 </form>
-                    {{else}}
-                        <p class="text-danger">Please Verify Your Email, then add activity</p>
-                    {{end}}
+                {{else}}
+                <p class="text-danger">Please Verify Your Email, then add activity</p>
+                {{end}}
 
             </div>
         </div>
     </div>
 
-{{template "Footer"}}
+    {{template "Footer"}}

@@ -1,7 +1,7 @@
-
 {{template "Header"}}
+
 <body>
-{{template "Navbar" .SessionValue}}
+    {{template "Navbar" .SessionValue}}
 
     <!-- data table-->
     <div class="container">
@@ -23,12 +23,11 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>  
+                    <tbody>
                         {{range $activity := .Activities}}
                         <tr>
-                           
-                                <td>{{$activity.Id}}</td>
-                                      {{/* <td></td> */}}
+
+                            <td>{{$activity.Id}}</td>
                             <td>{{$activity.Activity}}</td>
                             <td>{{$activity.Description}}</td>
                             <td>{{$activity.Date}}</td>
@@ -42,12 +41,11 @@
                             </td>
                         </tr>
                         {{end}}
-                  
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-{{template "Footer"}}
-   
+    {{template "Footer"}}

@@ -1,6 +1,7 @@
 {{template "Header"}}
+
 <body>
-{{template "Navbar" .SessionValue}}
+    {{template "Navbar" .SessionValue}}
     <!-- email verify -->
     <div class="container">
         <div class="row">
@@ -11,10 +12,9 @@
                     </div>
                     <div class="card-body">
                         <p>Please verify your email address by clicking the link below.</p>
-                        <a href="/verify"
-                        class="btn btn-primary">Verify Email Address</a>
+                        <a href="/verify" class="btn btn-primary">Verify Email Address</a>
                     </div>
                 </div>
             </div>
         </div>
-{{template "Footer"}}
+        {{template "Footer"}}
